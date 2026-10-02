@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="CurrEx — a clean, simple currency converter powered by the latest available exchange rates." />
+  <title>CurrEx — Currency Converter</title>
+  <link rel="preconnect" href="https://open.er-api.com" />
+  <link rel="preconnect" href="https://flagcdn.com" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CurrEx home">
+      <span class="brand-mark">💸</span>
+      <span>Curr<span class="brand-accent">Ex</span></span>
+    </a>
+    <div class="topbar-note"><span class="live-dot"></span> Currency converter</div>
+  </header>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">SIMPLE. CLEAR. CURRENCY.</p>
+      <h1 id="page-title">Exchange, made easy.</h1>
+      <p class="subtitle">Convert between currencies using the latest available exchange rates.</p>
+    </section>
+
+    <section class="converter" aria-label="Currency converter">
+      <div class="currency-row">
+        <div class="currency-picker">
+          <label class="sr-only" for="from-currency">Convert from</label>
+          <img id="from-flag" class="flag" src="https://flagcdn.com/w80/us.png" alt="United States flag" />
+          <select id="from-currency" aria-label="Convert from currency"></select>
+        </div>
+
+        <div class="conversion" aria-live="polite">
+          <div class="amount-wrap">
+            <label class="sr-only" for="amount">Amount to convert</label>
+            <input id="amount" type="number" min="0" step="any" value="1" inputmode="decimal" />
+            <span id="from-code-label" class="amount-code">USD</span>
+          </div>
+          <span class="equals" aria-hidden="true">=</span>
+          <div class="result-wrap">
+            <output id="result" class="result">—</output>
+            <span id="to-code-label" class="amount-code">INR</span>
+          </div>
+        </div>
+
+        <div class="currency-picker">
+          <label class="sr-only" for="to-currency">Convert to</label>
+          <img id="to-flag" class="flag" src="https://flagcdn.com/w80/in.png" alt="India flag" />
+          <select id="to-currency" aria-label="Convert to currency"></select>
+        </div>
+      </div>
+
+      <div class="tools-row">
+        <button id="swap-button" class="swap-button" type="button" aria-label="Swap currencies" title="Swap currencies">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13m0 0-3.5-3.5M20 7l-3.5 3.5M17 17H4m0 0 3.5 3.5M4 17l3.5-3.5"/></svg>
+          Swap currencies
+        </button>
+        <button id="refresh-button" class="refresh-button" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.4-3"/></svg>
+          Refresh rates
+        </button>
+      </div>
+
+      <div class="rate-divider"></div>
+      <div class="rate-meta">
+        <span class="rate-label"><span class="live-dot"></span> Exchange rate</span>
+        <span id="rate-text">Loading latest available rates…</span>
+      </div>
+      <p id="status" class="status" role="status">Fetching exchange rates…</p>
+    </section>
+
+    <footer class="footer">
+      <span>Made for everyday conversions.</span>
+      <span>Rates by <a href="https://www.exchangerate-api.com/" target="_blank" rel="noreferrer">ExchangeRate-API</a></span>
+    </footer>
+  </main>
+</body>
+</html>
